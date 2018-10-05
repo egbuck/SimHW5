@@ -1,0 +1,19 @@
+BEGIN;  !Add Mark, TALLY blocks to mod file
+PROJECT,       Machine Shop,EGB;
+ATTRIBUTES:    JobType;
+QUEUES:        DrillQ:
+               StraightenQ:
+               FinishQ;
+RESOURCES:     Drill, 2:
+               Straightener:
+               Finisher;
+DSTATS:        NQ(DrillQ), Drill Line:
+               NQ(StraightenQ), Straighten Line:
+               NQ(FinishQ), Finish Line:
+               NR(Drill):
+               NR(Straightener):
+               NR(Finisher);
+COUNTERS:      Type 1 Jobs Done:
+               Type 2 Jobs Done;
+REPLICATE,     1, 0, 5000, Yes, Yes, 1000;
+END;
